@@ -1,5 +1,6 @@
 # metlog
 PWS (Personal Weather Station) aggregator and relay (Windy)
+Marlon van der Linde <marlonv@pm.me>
 
 # Stations tested
 Fine Offset WH3000SE and possibly its related clones (Froggit)
@@ -11,38 +12,21 @@ This interface can be placed on a simple PHP host and once the station (EasyWeat
 
 - Tested with WINDY - Seems to be working OK
 - OpenWeatherMap - Not yet working
-- Storage to SQLite - Not yet working
+- Storage to SQLite - TODO
+- Create Persistence class, and derived 'Windy', 'OpenWeatherMap', 'Redis', 'SQLite' child-classes
 
 # config
 
-Create a `conf.dat` in the hosted directory, looking something like this:
-
-```
-; MetLog configuration and Secrets File
-
-[app]
-logfile = data.log
-dbfile = metlog.sqlite
-date_format = "d-M-Y H:i:s"
-
-; configs pertaining to open weather map. Get station ID by creating/POST'ing a new station
-[openweathermap]
-openweathermap_apikey = getyourapikeyfromopenweathermap
-openweathermap_host = api.openweathermap.org
-openweathermap_station_id = somestationidafteryoucreatedastation
-
-; this is the security key/id you can configure on EasyWeather on your station side.
-[station]
-station_secretkey = f00p4sswordformyst4tion
-station_secretid = 1
-
-[windy]
-windy_apikey = getYourVeryLongWindyAPIatWindyAndPutItHere
-windy_url = https://stations.windy.com/pws/update/
-windy_stationID = 0
-```
+Create a `conf.dat` in the hosted directory.
+See the example conf included in the repository.
 
 With the config in place, and station.php hosted, simply set up EasyWeather to submit to it.
+
+# Hardware
+
+I created this for my Froggit WH3000SE station, which is also cloned/rebranded as Fine Offset and some others.
+When setting up the upstream data stores on the WSView App (EasyWeather on the Console) there are options for WU, EcoWITT and custom.
+This script must be called from custom with your preferred security keys in place. It works for me, but eventually better logging and the classes will make things better looking and easier to debug. I just needed it to work quickly, so here it is, shared. Please help improve it.
 
 
 THIS DOCUMENT IS BARE ESSENTIALS, IT WILL BE UPDATED WHEN I HAVE PRETTIFIED THE CODE

@@ -1,0 +1,21 @@
+; MetLog configuration and Secrets File Example
+
+[app]
+logfile = metlog.log
+dbfile = metlog.sqlite
+date_format = "d-M-Y H:i:s"
+
+; configs pertaining to open weather map. Get station ID by creating/POST'ing a new station
+[openweathermap]
+openweathermap_apikey = getYourAPIKeyFromOpenWeatherMap
+openweathermap_host = api.openweathermap.org
+openweathermap_station_id = GetThisWhenYouPostCreateANewStation
+
+[station]
+station_secretkey = YourPWSInternalSecurity
+station_secretid = StationIDOnYourPWS
+
+[windy]
+windy_apikey = WindyAPIKeysFromWindyGoGetYourOwn
+windy_url = https://stations.windy.com/pws/update/
+windy_stationID = StationIDWhenYouCreatedAStationOnWindy
